@@ -1,34 +1,34 @@
 <template>
   <div>
     <el-form
-      :model="dynamicValidateForm"
       ref="dynamicValidateForm"
+      :model="dynamicValidateForm"
       label-width="100px"
       class="demo-dynamic"
     >
       <el-form-item prop="user" label="用户名">
-        <el-input v-model="dynamicValidateForm.user"></el-input>
+        <el-input v-model="dynamicValidateForm.user" />
       </el-form-item>
       <el-form-item
         prop="email"
         label="邮箱"
         :rules="[
-      { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-      { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
-    ]"
+          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+        ]"
       >
-        <el-input v-model="dynamicValidateForm.email"></el-input>
+        <el-input v-model="dynamicValidateForm.email" />
       </el-form-item>
       <el-form-item
         v-for="(domain, index) in dynamicValidateForm.domains"
-        :label="'域名' + index"
         :key="domain.key"
+        :label="'域名' + index"
         :prop="'domains.' + index + '.value'"
         :rules="{
-      required: true, message: '域名不能为空', trigger: 'blur'
-    }"
+          required: true, message: '域名不能为空', trigger: 'blur'
+        }"
       >
-        <el-input v-model="domain.value"></el-input>
+        <el-input v-model="domain.value" />
         <el-button @click.prevent="removeDomain(domain)">删除</el-button>
       </el-form-item>
       <el-form-item>
@@ -46,44 +46,44 @@ export default {
       dynamicValidateForm: {
         domains: [
           {
-            value: "",
-          },
+            value: ''
+          }
         ],
-        email: "",
-        user: "",
-      },
-    };
+        email: '',
+        user: ''
+      }
+    }
   },
   computed: {},
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$root.isLogin = true;
-          this.$root.userInfo = this.dynamicValidateForm;
-          this.$router.push("/index");
-          console.log(this.dynamicValidateForm);
+          this.$root.isLogin = true
+          this.$root.userInfo = this.dynamicValidateForm
+          this.$router.push('/home')
+          console.log(this.dynamicValidateForm)
         } else {
-          console.log("error submit!!");
-          return false;
+          console.log('error submit!!')
+          return false
         }
-      });
+      })
     },
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      this.$refs[formName].resetFields()
     },
     removeDomain(item) {
-      var index = this.dynamicValidateForm.domains.indexOf(item);
+      const index = this.dynamicValidateForm.domains.indexOf(item)
       if (index !== -1) {
-        this.dynamicValidateForm.domains.splice(index, 1);
+        this.dynamicValidateForm.domains.splice(index, 1)
       }
     },
     addDomain() {
       this.dynamicValidateForm.domains.push({
-        value: "",
-        key: Date.now(),
-      });
-    },
-  },
-};
+        value: '',
+        key: Date.now()
+      })
+    }
+  }
+}
 </script>
