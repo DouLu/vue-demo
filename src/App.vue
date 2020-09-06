@@ -18,7 +18,7 @@ export default {
     console.log('app--route---', this.$route)
     console.log('app--router---', this.$router)
     this.$store.commit('increment')
-    console.log(this.$store.state.count) // -> 1
+    console.log(this.$store.state.count)
   }
 }
 </script>

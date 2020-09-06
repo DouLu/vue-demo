@@ -2,18 +2,27 @@
   <div>
     <el-container>
       <el-header>home</el-header>
+      <p>{{ getCount }}</p>
+      <HelloWorld msg="test props" />
     </el-container>
   </div>
 </template>
 
 <script>
+import HelloWorld from '../components/HelloWorld'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: {},
+  components: {
+    HelloWorld
+  },
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+    getCount() {
+      return this.$store.state.count
+    }
+  },
   watch: {},
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
