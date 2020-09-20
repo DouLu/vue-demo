@@ -4,7 +4,8 @@
     <div class="body">
       <div v-for="item in formConfig" :key="item.key" class="lable">
         <span>{{ item.lable }}</span>
-        <input v-model="formKey[item.key]" :type="item.type" :placeholder="item.placeholder">
+        <input v-model="formKey[item.key]" v-bind="item">
+        <!-- <input v-model="formKey[item.key]" :type="item.type" :placeholder="item.placeholder"> -->
       </div>
       <div class="btns">
         <button class="submit" @click="$emit('onSubmit',getData)">submit</button>
