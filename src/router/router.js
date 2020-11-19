@@ -7,11 +7,16 @@ const SettleAccounts = () => import('../pages/settleAccounts')
 const User = () => import('../pages/user')
 const NotFound = () => <tempalte>404</tempalte>
 
+import Life from '../pages/lifecycle'
 export default [
   {
     path: '/',
     component: App,
     children: [
+      {
+        path: 'lifecycle',
+        component: Life
+      },
       {
         path: '',
         redirect: '/login'
