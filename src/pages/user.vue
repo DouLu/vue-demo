@@ -1,8 +1,7 @@
 <template>
   <div>
-    <el-container>
-      <el-header>user</el-header>
-    </el-container>
+    <h1>user page</h1>
+    <p>userId: {{ $route.params.userId }}</p>
   </div>
 </template>
 
@@ -31,6 +30,6 @@ export default {
 }
 </script>
 
-<style lang='css' scoped>
+<style lang="css" scoped>
 /* @import url(); 引入公共css类 */
 </style>

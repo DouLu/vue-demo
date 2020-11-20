@@ -1,50 +1,82 @@
-import App from '../App.vue'
+import VueRouter from 'vue-router'
 
 const Home = () => import('../pages/home')
 const Login = () => import('../pages/login')
 const Order = () => import('../pages/order')
 const SettleAccounts = () => import('../pages/settleAccounts')
 const User = () => import('../pages/user')
-const NotFound = () => <tempalte>404</tempalte>
 
 import Life from '../pages/lifecycle'
-export default [
+import NotFound from '../pages/notFound'
+import Layout from '../view/layout'
+import Form from '@/components/Form'
+
+const routes = [
   {
-    path: '/',
-    component: App,
+    path: '',
+    redirect: '/layout' // 重定向
+  },
+  {
+    path: '/layout',
+    component: Layout,
     children: [
+      // 路由嵌套
       {
-        path: 'lifecycle',
+        path: 'view',
+        components: {
+          // 路由视图
+          default: User,
+          main: NotFound,
+          footer: User
+        }
+      },
+      {
+        name: 'lifecycle',
+        path: '/lifecycle',
         component: Life
       },
       {
-        path: '',
-        redirect: '/login'
-      },
-      {
+        name: 'home',
         path: '/home',
         component: Home
       },
       {
-        path: '/login',
-        component: Login
-      },
-      {
+        name: 'order',
         path: '/order',
         component: Order
       },
       {
-        path: '/user',
-        component: User
-      },
-      {
+        name: 'settleAccounts',
         path: '/settleAccounts',
         component: SettleAccounts
-      },
-      {
-        path: '*',
-        component: NotFound
       }
     ]
+  },
+  {
+    name: 'user',
+    path: '/user/:userId', // 动态路由配置
+    component: User
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: Login
+  },
+  {
+    path: '*', // 匹配404页面
+    component: NotFound
+  },
+  {
+    name: 'form',
+    path: '/form',
+    component: Form
   }
 ]
+
+// const router = new VueRouter({ routes })
+const router = new VueRouter({
+  mode: 'history', // 默认 hash 模式
+  routes
+})
+
+export default router
