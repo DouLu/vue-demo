@@ -1,48 +1,20 @@
 <template>
-  <el-header>
-    <el-menu
-      :default-active="activeIndex"
-      class="el-menu-demo"
-      mode="horizontal"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-      @select="handleSelect"
-    >
-      <el-menu-item index="0-0">
-        <router-link to="/home">声明式 home</router-link>
-      </el-menu-item>
-      <el-menu-item index="0">
-        <router-link
-          :to="{ name: 'user', params: { userId: 123 } }"
-        >命名路由 User</router-link>
-      </el-menu-item>
-      <el-menu-item index="1" @click="goToPage">
-        编程式 user
-      </el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1">
-          <router-link to="/form">Form练习</router-link>
-        </el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项1</el-menu-item>
-          <el-menu-item index="2-4-2">选项2</el-menu-item>
-          <el-menu-item index="2-4-3">选项3</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="3" disabled>消息中心</el-menu-item>
-      <el-menu-item
-        index="4"
-      ><a
-        href="https://www.ele.me"
-        target="_blank"
-      >订单管理</a></el-menu-item>
-    </el-menu>
-  </el-header>
+  <el-menu
+    :default-active="activeIndex"
+    class="el-menu-demo"
+    active-text-color="#2b83da"
+    @select="handleSelect"
+  >
+    <el-menu-item index="home">
+      <router-link to="/home">home</router-link>
+    </el-menu-item>
+    <el-menu-item index="orderList">
+      <router-link to="/orderList">orderList</router-link>
+    </el-menu-item>
+    <el-menu-item index="createOrder">
+      <router-link to="/createOrder">createOrder</router-link>
+    </el-menu-item>
+  </el-menu>
 </template>
 
 <script>
@@ -50,7 +22,7 @@ import router from '@/router/router'
 export default {
   data: function() {
     return {
-      activeIndex: '1'
+      activeIndex: 'home'
     }
   },
   methods: {
@@ -70,4 +42,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.el-menu{
+  height: 100%;
+}
+a{
+  display: block;
+}
+</style>

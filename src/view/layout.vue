@@ -1,15 +1,15 @@
 <template>
   <el-container>
-    <Header />
+    <el-aside width="200px"><Header /></el-aside>
     <el-main>
-      <p>main</p>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+      </el-breadcrumb>
       <router-view />
-      <router-view class="view two" name="main" />
     </el-main>
-    <el-footer>
-      <p>footer</p>
-      <router-view class="view three" name="footer" />
-    </el-footer>
   </el-container>
 </template>
 
@@ -42,4 +42,21 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+*{
+  margin:0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+}
+html,
+body,
+body>div,
+.el-container {
+  height: 100%;
+}
+.el-container{
+  background-color: #f6f6f6;
+}
+</style>

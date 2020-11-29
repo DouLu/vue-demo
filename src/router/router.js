@@ -1,61 +1,23 @@
 import VueRouter from 'vue-router'
-
-const Home = () => import('../pages/home')
-const Login = () => import('../pages/login')
-const Order = () => import('../pages/order')
-const SettleAccounts = () => import('../pages/settleAccounts')
-const User = () => import('../pages/user')
-
-import Life from '../pages/lifecycle'
-import NotFound from '../pages/notFound'
+import store from '../store'
+import NotFound from '../view/notFound'
 import Layout from '../view/layout'
-import Form from '@/components/Form'
-
+import Login from '../view/login'
+import Order from '../view/order'
 const routes = [
   {
-    path: '',
-    redirect: '/layout' // 重定向
-  },
-  {
-    path: '/layout',
+    path: '/',
     component: Layout,
     children: [
-      // 路由嵌套
       {
-        path: 'view',
-        components: {
-          // 路由视图
-          default: User,
-          main: NotFound,
-          footer: User
+        name: 'orderList',
+        path: '/orderList',
+        component: Order,
+        meta: {
+          need2Login: true
         }
-      },
-      {
-        name: 'lifecycle',
-        path: '/lifecycle',
-        component: Life
-      },
-      {
-        name: 'home',
-        path: '/home',
-        component: Home
-      },
-      {
-        name: 'order',
-        path: '/order',
-        component: Order
-      },
-      {
-        name: 'settleAccounts',
-        path: '/settleAccounts',
-        component: SettleAccounts
       }
     ]
-  },
-  {
-    name: 'user',
-    path: '/user/:userId', // 动态路由配置
-    component: User
   },
   {
     name: 'login',
@@ -65,11 +27,6 @@ const routes = [
   {
     path: '*', // 匹配404页面
     component: NotFound
-  },
-  {
-    name: 'form',
-    path: '/form',
-    component: Form
   }
 ]
 
@@ -79,4 +36,18 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => { // 全局钩子函数
+  to.matched.some((route) => {
+    // to.matched.forEach((route) => {
+    if (route.meta.need2Login) { // 通过此操作可以判断哪些页面需要登录
+      if (store.state.isLogin || sessionStorage.getItem('isLogin')) {
+        next()
+      } else {
+        next({ name: 'login', params: { path: route.path }})
+      }
+    } else {
+      next()
+    }
+  })
+})
 export default router
