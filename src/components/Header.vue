@@ -48,5 +48,9 @@ export default {
 }
 a{
   display: block;
+  color: #333;
+}
+.is-active>a{
+  color: #409EFF;
 }
 </style>

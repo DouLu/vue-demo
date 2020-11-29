@@ -40,6 +40,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -59,10 +60,19 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$root.isLogin = true
-          this.$root.userInfo = this.dynamicValidateForm
-          this.$router.push('/home')
+          // this.$root.isLogin = true
+          // this.$root.userInfo = this.dynamicValidateForm
           console.log(this.dynamicValidateForm)
+          axios.post('/api/login', {
+            data: this.dynamicValidateForm
+          }).then(res => {
+            console.log(res)
+            const { data } = res
+            if (data) {
+              sessionStorage.setItem('isLogin', true)
+              this.$router.push('/home')
+            }
+          })
         } else {
           console.log('error submit!!')
           return false

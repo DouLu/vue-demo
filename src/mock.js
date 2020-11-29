@@ -20,8 +20,8 @@ Mock.mock('/api/register', (req, res) => {
   return { data: true }
 })
 Mock.mock('/api/login', (req, res) => {
-  console.log(req, res)
-  return { data: true }
+  const { data } = JSON.parse(req.body)
+  return { data: data.user }
 })
 Mock.mock('/api/data', (req, res) => {
   return { data: data.orderList }

@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 import store from '../store'
 import NotFound from '../view/notFound'
 import Layout from '../view/layout'
+import Home from '../view/home'
 import Login from '../view/login'
 import Order from '../view/order'
 const routes = [
@@ -10,8 +11,13 @@ const routes = [
     component: Layout,
     children: [
       {
+        name: 'home',
+        path: 'home',
+        component: Home
+      },
+      {
         name: 'orderList',
-        path: '/orderList',
+        path: 'orderList',
         component: Order,
         meta: {
           need2Login: true
