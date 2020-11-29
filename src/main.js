@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import router from './router/router'
 import store from './store/index'
+require('./mock')
 
 Vue.use(ElementUI)
 
