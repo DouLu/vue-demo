@@ -7,13 +7,11 @@
       :form-config="formConfig"
       @onSubmit="save"
     />
-    <Form />
   </div>
 </template>
 
 <script>
 import Login from '../components/Login'
-import Form from '../components/Form1111'
 
 export default {
   // import引入的组件需要注入到对象中才能使用
