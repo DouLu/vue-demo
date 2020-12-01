@@ -2,13 +2,13 @@
   <el-container>
     <el-aside width="200px"><Header /></el-aside>
     <el-main>
-      <el-breadcrumb separator="/">
+      <!--  <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
         <el-breadcrumb-item>活动列表</el-breadcrumb-item>
         <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-      </el-breadcrumb>
-      <keep-alive><router-view /></keep-alive>
+      </el-breadcrumb> -->
+      <router-view />
     </el-main>
   </el-container>
 </template>
@@ -52,7 +52,6 @@ a{
 }
 html,
 body,
-body>div,
 .el-container {
   height: 100%;
 }

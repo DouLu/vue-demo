@@ -5,6 +5,7 @@ import Layout from '../view/layout'
 import Home from '../view/home'
 import Login from '../view/login'
 import Order from '../view/order'
+import createOrder from '@/view/createOrder'
 const routes = [
   {
     path: '/',
@@ -19,6 +20,14 @@ const routes = [
         name: 'orderList',
         path: 'orderList',
         component: Order,
+        meta: {
+          need2Login: true
+        }
+      },
+      {
+        name: 'createOrder',
+        path: 'createOrder',
+        component: createOrder,
         meta: {
           need2Login: true
         }
