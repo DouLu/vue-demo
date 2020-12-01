@@ -1,6 +1,8 @@
 <template>
   <el-container>
-    <el-aside width="200px"><Header /></el-aside>
+    <el-aside width="200px">
+      <Header />
+    </el-aside>
     <el-main>
       <!--  <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -26,7 +28,7 @@ export default {
     }
   },
   methods: {
-    handleSelect: function() {},
+    handleSelect: function() { },
     goToPage: function() {
       // 1. 字符串
       router.push('home')
@@ -43,19 +45,23 @@ export default {
 </script>
 
 <style>
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
 }
-a{
+a {
   text-decoration: none;
+}
+ul,
+li {
+  list-style: none;
 }
 html,
 body,
 .el-container {
   height: 100%;
 }
-.el-container{
+.el-container {
   background-color: #f6f6f6;
 }
 </style>

@@ -4,7 +4,7 @@ import NotFound from '../view/notFound'
 import Layout from '../view/layout'
 import Home from '../view/home'
 import Login from '../view/login'
-import Order from '../view/order'
+import orderList from '../view/orderList'
 import createOrder from '@/view/createOrder'
 const routes = [
   {
@@ -19,7 +19,7 @@ const routes = [
       {
         name: 'orderList',
         path: 'orderList',
-        component: Order,
+        component: orderList,
         meta: {
           need2Login: true
         }

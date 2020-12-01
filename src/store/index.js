@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    orderForm: {},
     count: 10,
     todos: [
       { id: 1, text: '1done things', done: true },
@@ -28,6 +29,9 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
+    setOrderForm(state, payload) {
+      state.orderForm = payload.data
+    },
     increment(state) {
       state.count++
     },

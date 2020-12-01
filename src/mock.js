@@ -7,6 +7,7 @@ Random.ctitle()
 Random.name(true)
 Random.cname(true)
 Random.guid()
+Random.county(true)
 // 数据持久化   保存在global的全局变量中
 if (!global.data) {
   const data = Mock.mock({
@@ -39,6 +40,7 @@ if (!global.data) {
         // 属性 id 是一个自增数，起始值为 1，每次增 1
         'orderId|+1': 1,
         title: '@ctitle',
+        address: '@county',
         photo: Random.image('200x100', '#00405d', '#FFF', 'Mock.js')
       }
     ]

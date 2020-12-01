@@ -113,6 +113,7 @@
 
 <script>
 import axios from 'axios'
+import { MappingFormData } from '../utils'
 export default {
   data: function() {
     return {
@@ -129,6 +130,15 @@ export default {
       this.brandList = brandList
       this.accessoryList = accessoryList
     })
+
+    // edit form
+    const { type } = this.$route.query
+    if (type === 'edit') {
+      // TODO: 映射接口数据与form数据
+      console.log('1234----', this.$store.state.orderForm)
+
+      this.orderForm = MappingFormData(this.$store.state.orderForm)
+    }
   },
   methods: {
     selAccessory: function(value) {
