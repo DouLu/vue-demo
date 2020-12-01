@@ -22,3 +22,6 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### element-ui docs
+https://element.eleme.cn/2.0/#/zh-CN/component/form
