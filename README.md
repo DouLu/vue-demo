@@ -27,6 +27,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 https://element.eleme.cn/2.0/#/zh-CN/component/form
 
 ### sentry
+demo - sentry demo - https://github.com/kamilogorek/sentry-vue-sourcemaps
 上传source map到sentry服务的插件 - https://github.com/40thieves/webpack-sentry-plugin
 - step
   - 依赖、sentry init
