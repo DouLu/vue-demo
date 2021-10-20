@@ -1,0 +1,7 @@
+[auth]  
+token=6883efcba9c34e73b0cf7c77cc168d470e8b352de7fa4eb4ad9a171dbb9c7f31
+  
+[defaults]  
+url=https://sentry.io/  
+org=personal-kxw  
+project=personal-kxw
